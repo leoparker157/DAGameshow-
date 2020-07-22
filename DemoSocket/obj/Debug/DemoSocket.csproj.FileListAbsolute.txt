@@ -1,0 +1,19 @@
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\bin\Debug\DemoSocket.exe.config
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\bin\Debug\DemoSocket.exe
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\bin\Debug\DemoSocket.pdb
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.csprojAssemblyReference.cache
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.Form1.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.Properties.Resources.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.csproj.GenerateResource.cache
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.exe
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoSocket\obj\Debug\DemoSocket.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\bin\Debug\DemoSocket.exe.config
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\bin\Debug\DemoSocket.exe
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\bin\Debug\DemoSocket.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.csprojAssemblyReference.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.Form1.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.Properties.Resources.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.csproj.GenerateResource.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.csproj.CoreCompileInputs.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.exe
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoSocket\obj\Debug\DemoSocket.pdb

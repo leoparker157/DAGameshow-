@@ -1,0 +1,8 @@
+@Bạn thích môn học nào nhất?
+&Toán
+&Tin
+#Tin
+@Theo bạn 1 + 1 = mấy?
+&3
+&2
+#2
