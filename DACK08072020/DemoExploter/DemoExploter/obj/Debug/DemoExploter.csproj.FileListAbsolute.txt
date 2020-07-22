@@ -1,0 +1,32 @@
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\DemoExploter.exe.config
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\DemoExploter.exe
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\DemoExploter.pdb
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csprojAssemblyReference.cache
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.Form1.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.Properties.Resources.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csproj.GenerateResource.cache
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.exe
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.pdb
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.ucCauTraLoi.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\MyLib.dll
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csproj.CopyComplete
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.frmGameShow.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\obj\Debug\DemoExploter.frmMain.resources
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\DTOProj.dll
+C:\Users\X1 CARBON\source\repos\DemoExploter\DemoExploter\bin\Debug\DTOProj.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\bin\Debug\DemoExploter.exe.config
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\bin\Debug\DemoExploter.exe
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\bin\Debug\DemoExploter.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\bin\Debug\DTOProj.dll
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\bin\Debug\DTOProj.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csprojAssemblyReference.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.Form1.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.frmGameShow.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.frmMain.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.Properties.Resources.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.ucCauTraLoi.resources
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csproj.GenerateResource.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csproj.CoreCompileInputs.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.csproj.CopyComplete
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.exe
+H:\projectnam2\c#\DACK08072020\DemoExploter\DemoExploter\obj\Debug\DemoExploter.pdb

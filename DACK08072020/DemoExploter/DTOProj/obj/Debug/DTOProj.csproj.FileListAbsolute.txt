@@ -1,0 +1,10 @@
+C:\Users\X1 CARBON\source\repos\DemoExploter\DTOProj\bin\Debug\DTOProj.dll
+C:\Users\X1 CARBON\source\repos\DemoExploter\DTOProj\bin\Debug\DTOProj.pdb
+C:\Users\X1 CARBON\source\repos\DemoExploter\DTOProj\obj\Debug\DTOProj.dll
+C:\Users\X1 CARBON\source\repos\DemoExploter\DTOProj\obj\Debug\DTOProj.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\bin\Debug\DTOProj.dll
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\bin\Debug\DTOProj.pdb
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.csprojAssemblyReference.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.csproj.CoreCompileInputs.cache
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.dll
+H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.pdb
