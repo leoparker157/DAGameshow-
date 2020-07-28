@@ -1,0 +1,10 @@
+@ban ten gi
+&A
+&C
+&D
+#B
+@ban ten gi2
+&A2
+&B2
+&D2
+#C2

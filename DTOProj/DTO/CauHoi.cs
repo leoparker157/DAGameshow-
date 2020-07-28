@@ -18,4 +18,5 @@ namespace DTOProj
             DanhSachCauTraLoi = new List<string>();
         }
     }
+    
 }

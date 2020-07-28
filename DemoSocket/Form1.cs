@@ -16,7 +16,7 @@ namespace DemoSocket
     public partial class Form1 : Form
     {
         delegate void SetTextCallback(string text);
-
+        
         TcpListener listener;
 
         TcpClient client;

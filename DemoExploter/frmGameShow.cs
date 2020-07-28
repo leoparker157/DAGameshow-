@@ -123,16 +123,32 @@ namespace DemoExploter
             grvGameShow.AutoSize = true;
             grvGameShow.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             grvGameShow.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            grvGameShow.DataBindings.Clear();
             grvGameShow.DataBindings.Add(nameof(DataGrid.BackgroundColor), this,nameof(Control.BackColor));
             grvGameShow.BorderStyle = BorderStyle.None;
             grvGameShow.Visible = true;
-
+            btnStart.Visible = false;
+            btnLich.Visible = false;
+            btnBack.Visible = true;
 
         }
 
         private void txtCountDown_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            btnStart.Visible = true;
+            btnLich.Visible = true;
+            btnBack.Visible = false;
+            grvGameShow.Visible = false;
+        }
+
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
