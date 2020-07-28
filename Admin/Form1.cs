@@ -1,4 +1,5 @@
 ﻿using DTOProj;
+using MyLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 namespace Admin
 {
    
@@ -296,7 +298,7 @@ namespace Admin
 
                     byte[] bytes = new byte[1024];
                     this.SetText("Waiting for client");
-                    
+                   
                     //RTBServer.Text = "Waiting for client";
                     TcpClient client = ServerSocket.AcceptTcpClient();
                     numclient++;
@@ -304,7 +306,14 @@ namespace Admin
                     ClientConnect[numclient] = new Connection();
                     ClientConnect[numclient].client = client;
                     ClientConnect[numclient].ns = client.GetStream();
+                 
+                    ClientConnect[numclient].ns.Write(MyLib.Utils.Serialize(lstCauHoi),0, MyLib.Utils.Serialize(lstCauHoi).Length);
 
+
+
+
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(ClientConnect[numclient].ns, lstCauHoi);
                     Thread Receive = new Thread(DoWork);
                     Receive.IsBackground = true;
                     Receive.Start(client);
