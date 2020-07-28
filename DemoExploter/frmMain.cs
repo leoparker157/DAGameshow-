@@ -13,7 +13,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 namespace DemoExploter
 {
     public enum GAMESHOW_STATE
@@ -83,6 +84,8 @@ namespace DemoExploter
         }
 
         private const string hostName = "LocalHost";
+        List<Question> lstQuestionsfromServer = new List<Question>();
+
         public void DoWork()
         {
             byte[] bytes = new byte[1024];
@@ -91,7 +94,15 @@ namespace DemoExploter
             //listener.Start();
             client = new TcpClient(Dns.GetHostName(), 13000);
             ns = client.GetStream();
-      
+
+            MemoryStream memStream = new MemoryStream();
+            BinaryFormatter binForm = new BinaryFormatter();
+            ns.Read(bytes, 0, bytes.Length);
+            memStream.Write(bytes, 0, bytes.Length);
+            memStream.Seek(0, SeekOrigin.Begin);
+            List<Question> obj = (List<Question>)binForm.Deserialize(memStream);
+
+
             while (true)
             {
                 
@@ -113,7 +124,7 @@ namespace DemoExploter
         delegate void SetTextCallback(string text);
         private void SetText(string text)
         {
-
+            
             if (this.RTBChatClient.InvokeRequired)
 
             {
@@ -157,15 +168,18 @@ namespace DemoExploter
             //}
 
         }
-
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
+          
+           
             counter--;
             if (counter == 0)
             {
                 timer1.Stop();
                 PnBeforeGame.Visible = false;
                 PnBeforeGame.Enabled = false;
+                
             }
             lbBeforeGameTime.Text = counter.ToString();
         }

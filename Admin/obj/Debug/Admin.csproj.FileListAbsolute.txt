@@ -11,3 +11,6 @@ H:\GIT\DAGAMESHOW\Admin\bin\Debug\DTOProj.dll
 H:\GIT\DAGAMESHOW\Admin\bin\Debug\DTOProj.pdb
 H:\GIT\DAGAMESHOW\Admin\obj\Debug\Admin.csproj.CopyComplete
 H:\GIT\DAGAMESHOW\Admin\obj\Debug\Admin.Form1.resources
+H:\GIT\DAGAMESHOW\Admin\bin\Debug\MyLib.dll
+H:\GIT\DAGAMESHOW\Admin\bin\Debug\MyLib.pdb
+H:\GIT\DAGAMESHOW\Admin\bin\Debug\MyLib.dll.config

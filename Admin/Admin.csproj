@@ -84,6 +84,10 @@
       <Project>{533164e9-6b2a-4b8c-8a9b-46411ab894ac}</Project>
       <Name>DTOProj</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyLib\MyLib.csproj">
+      <Project>{59f799b6-d6b0-4970-85c1-8aa120a2f102}</Project>
+      <Name>MyLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
