@@ -264,6 +264,7 @@ namespace Admin
         IPEndPoint IP;
         List<Connection> clientList;
         int numclient = -1;
+        bool IsListen = false;
         private void btnServer_Click(object sender, EventArgs e)
         {
             PnQuest.Visible = false;
@@ -276,8 +277,8 @@ namespace Admin
            
             
             List<Connection> clientList = new List<Connection>();
-           
-            
+
+            IsListen = true;
             ServerSocket = new TcpListener(IPAddress.Any, 13000);
             ServerSocket.Start();
             
@@ -308,10 +309,6 @@ namespace Admin
                     ClientConnect[numclient].ns = client.GetStream();
                  
                     ClientConnect[numclient].ns.Write(MyLib.Utils.Serialize(lstCauHoi),0, MyLib.Utils.Serialize(lstCauHoi).Length);
-
-
-
-
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(ClientConnect[numclient].ns, lstCauHoi);
                     Thread Receive = new Thread(DoWork);
@@ -375,6 +372,37 @@ namespace Admin
                 this.RTBServer.Text = this.RTBServer.Text + text + "\r\n";
 
             }
+           
+
+        }
+        private void SetTextChat(string text)
+
+        {
+
+            // InvokeRequired required compares the thread ID of the
+
+            // calling thread to the thread ID of the creating thread.
+
+            // If these threads are different, it returns true.
+
+            if (this.RTBChat.InvokeRequired)
+
+            {
+
+                SetTextCallback d = new SetTextCallback(SetTextChat);
+
+                this.Invoke(d, new object[] { text });
+
+            }
+
+            else
+
+            {
+
+                this.RTBChat.Text = this.RTBChat.Text + text + "\r\n";
+
+            }
+
 
         }
         public void DoWork(object obj)
@@ -396,7 +424,7 @@ namespace Admin
 
                     String ss = client.Client.Handle + ":" + mess;
 
-                    this.SetText(ss);
+                    this.SetTextChat(ss);
 
                     bytes = Encoding.ASCII.GetBytes(ss);
 
@@ -413,7 +441,7 @@ namespace Admin
             }
             catch
             {
-                this.SetText("Client " + client.Client.Handle + "Disconect");
+                this.SetText("Client " + client.Client.Handle + " Disconect");
                 client.Close();
                 client = null;
                 ClientConnect[myTaskNumber].client.Close();
@@ -483,6 +511,13 @@ namespace Admin
         private void btnLoadQuest_Click(object sender, EventArgs e)
         {
             LayDanhSachCauHoi();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (IsListen == true)
+            { ServerSocket.Stop(); }
+            
         }
     }
 }

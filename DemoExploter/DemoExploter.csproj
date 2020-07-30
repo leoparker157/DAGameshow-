@@ -95,6 +95,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ucCauTraLoi.resx">
       <DependentUpon>ucCauTraLoi.cs</DependentUpon>
@@ -117,6 +118,36 @@
       <Project>{533164e9-6b2a-4b8c-8a9b-46411ab894ac}</Project>
       <Name>DTOProj</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\10.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\20.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\30.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\40.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\50.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\60.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\70.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\80.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\90.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\100.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
