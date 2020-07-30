@@ -309,6 +309,11 @@ namespace Admin
                     ClientConnect[numclient].ns = client.GetStream();
                  
                     ClientConnect[numclient].ns.Write(MyLib.Utils.Serialize(lstCauHoi),0, MyLib.Utils.Serialize(lstCauHoi).Length);
+
+
+
+
+
                     BinaryFormatter bf = new BinaryFormatter();
                     bf.Serialize(ClientConnect[numclient].ns, lstCauHoi);
                     Thread Receive = new Thread(DoWork);

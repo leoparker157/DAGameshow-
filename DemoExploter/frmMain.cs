@@ -15,7 +15,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+
 using System.Linq.Expressions;
+
 
 namespace DemoExploter
 {
@@ -84,6 +86,8 @@ namespace DemoExploter
             memStream.Write(bytes, 0, bytes.Length);
             memStream.Seek(0, SeekOrigin.Begin);
             lstQuestionsfromServer = (List<Question>)binForm.Deserialize(memStream);
+            List<Question> obj = (List<Question>)binForm.Deserialize(memStream);
+
 
 
             while (true)
