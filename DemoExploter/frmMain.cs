@@ -30,13 +30,30 @@ namespace DemoExploter
     }
     public partial class frmMain : Form
     {
-        TcpListener listener;
+        
 
         TcpClient client;
-
         NetworkStream ns;
-
+        TcpClient clientPoint;
+        NetworkStream nsPoint;
         Thread t = null;
+        private System.Windows.Forms.Timer timer1;
+        private int counter = 20;
+        int ThoigianBatDau = 30;
+        int point = 0;
+        int questionNum = 0;
+        private int counterGame = 15;
+        bool PauseDoWork = false;
+        bool TrueOrWrong = false;    
+        private System.Windows.Forms.Timer timer2;
+        private const string hostName = "LocalHost";
+        List<string> listRandomAnswer = new List<string>();
+        Player User = new Player();
+        List<Player> Ranking = new List<Player>();
+        Question curQuestion = null;
+        List<Question> lstQuestionsfromServer = new List<Question>();
+      
+
         public frmMain()
         {
             InitializeComponent();
@@ -45,8 +62,6 @@ namespace DemoExploter
         string duongDan = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+ "\\DanhSachCauHoi.txt";
 
         
-        private System.Windows.Forms.Timer timer1;
-        private int counter = 5;
         
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -56,10 +71,15 @@ namespace DemoExploter
 
             pictureBox2.Enabled = false;
             pictureBox2.Visible = false;
+            User.Name = frmGameShow.NameUser;
             t = new Thread(DoWork);
             t.Start();
+            DateTime DateAfter;
+             DateAfter = (DateTime.Now.AddMinutes(5));
             timer1 = new System.Windows.Forms.Timer();
-            timer1.Tick += new EventHandler(timer1_Tick);
+            
+            counter = (int)Math.Round((frmGameShow.newDateGame.AddSeconds(ThoigianBatDau) -DateTime.Now).TotalSeconds, 0);
+        timer1.Tick += new EventHandler(timer1_Tick);
             timer1.Interval = 1000; // 1 second
             timer1.Start();
             lbBeforeGameTime.Text = counter.ToString();
@@ -68,10 +88,9 @@ namespace DemoExploter
             
         }
 
-        private const string hostName = "LocalHost";
-        List<Question> lstQuestionsfromServer = new List<Question>();
+   
 
-        public void DoWork()
+        public async void DoWork()
         {
             byte[] bytes = new byte[1024];
 
@@ -82,22 +101,35 @@ namespace DemoExploter
 
             MemoryStream memStream = new MemoryStream();
             BinaryFormatter binForm = new BinaryFormatter();
-            ns.Read(bytes, 0, bytes.Length);
-            memStream.Write(bytes, 0, bytes.Length);
-            memStream.Seek(0, SeekOrigin.Begin);
-            lstQuestionsfromServer = (List<Question>)binForm.Deserialize(memStream);
-            List<Question> obj = (List<Question>)binForm.Deserialize(memStream);
+            var receivedData = (List<Question>)null;
 
-
-
-            while (true)
+            using (var networkStream = ns)
             {
-                
-                int bytesRead = ns.Read(bytes, 0, bytes.Length);
-                this.SetText(Encoding.ASCII.GetString(bytes, 0, bytesRead));
-                //MessageBox.Show(Encoding.ASCII.GetString(bytes, 0, bytesRead));
+                do
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    bf.Serialize(networkStream, frmGameShow.NameUser);
+                    receivedData = (List<Question>)binForm.Deserialize(networkStream);
+                }
+                while (networkStream.DataAvailable);
+                lstQuestionsfromServer = receivedData;
+                //ns.Read(bytes, 0, bytes.Length);
+                //memStream.Write(bytes, 0, bytes.Length);
+                //memStream.Seek(0, SeekOrigin.Begin);
+                //lstQuestionsfromServer = (List<Question>)binForm.Deserialize(memStream);
 
+
+
+                while (true)
+                {
+
+                    int bytesRead = networkStream.Read(bytes, 0, bytes.Length);
+                    this.SetText(Encoding.ASCII.GetString(bytes, 0, bytesRead));
+                    //MessageBox.Show(Encoding.ASCII.GetString(bytes, 0, bytesRead));
+
+                }
             }
+          
 
         }
         private void btnBeforeGameSend_Click(object sender, EventArgs e)
@@ -189,12 +221,14 @@ namespace DemoExploter
                         pictureBox1.Visible = true;
                         pictureBox1.Enabled = true;
                         await Task.Delay(5000);
+                        TrueOrWrong = false;
                     }
                     else
                     {
                         pictureBox2.Visible = true;
                         pictureBox2.Enabled = true;
                         await Task.Delay(5000);
+                        TrueOrWrong = false;
                     }
                     pictureBox1.Visible = false;
                     pictureBox1.Enabled = false;
@@ -212,21 +246,20 @@ namespace DemoExploter
                         pictureBox1.Visible = true;
                         pictureBox1.Enabled = true;
                         await Task.Delay(5000);
+                        TrueOrWrong = false;
                     }
                     else
                     {
                         pictureBox2.Visible = true;
                         pictureBox2.Enabled = true;
                         await Task.Delay(5000);
+                        TrueOrWrong = false;
                     }
                     EndGame();
                 }
             }
             lbTimelimit.Text = counterGame.ToString();
         }
-    
-
-
         void HienThiCauHoi(Question question)
         {
             PnBeforeGame.Visible = false;
@@ -239,27 +272,7 @@ namespace DemoExploter
             }
             ///
         }
-       
-        private void button2_Click(object sender, EventArgs e)
-        {
-
-        }
-      
-       
-
-        private void lbBeforeGameTime_Click(object sender, EventArgs e)
-        {
-
-        }
-        Question curQuestion = null;
-        
-        int questionNum = 0;
-        
-        List<string> listRandomAnswer = new List<string>();
-        private System.Windows.Forms.Timer timer2;
-        int point = 0;
-        
-        private int counterGame = 15;
+           
         private void StartGame()
         {
             counterGame = 15;
@@ -284,15 +297,24 @@ namespace DemoExploter
             btnChoose4.Enabled = true;
 
         }
-        private void EndGame()
+        private  void  EndGame()
         {
             PnGame.Enabled = false;
             PnGame.Visible = false;
             PnEndGame.Enabled = true;
             PnEndGame.Visible = true;
             PBGameOver.Visible = true;
-            switch(lbPoint.Text)
+            User.Point = point.ToString();
+            clientPoint = new TcpClient(Dns.GetHostName(), 15000);
+            nsPoint = clientPoint.GetStream();
+            Thread SendPoint = new Thread(SendPointToServerAndReceiveRank);
+            SendPoint.Start();
+            switch (point.ToString())
             {
+                case "0":
+                 PBPoint.Image = Properties.Resources._0;
+                    PBPoint.Visible = true;
+                    break;
                 case "10":
                     PBPoint.Image = Properties.Resources._10;
                     PBPoint.Visible = true;
@@ -336,7 +358,43 @@ namespace DemoExploter
 
             }
         }
-        bool TrueOrWrong = false;
+        
+        private async void SendPointToServerAndReceiveRank()
+        {
+            PauseDoWork = true;
+             BinaryFormatter bf = new BinaryFormatter();
+            
+           
+            bf.Serialize(nsPoint, User);
+            
+                byte[] bytes = new byte[1024];
+                MemoryStream memStream = new MemoryStream();
+                BinaryFormatter binForm = new BinaryFormatter();
+
+            int MemoryBuff;
+
+            var receivedData = (List<Player>)null;
+
+            using (var networkStream = nsPoint)
+            {
+                
+                do
+                {
+                    receivedData = (List<Player>)binForm.Deserialize(networkStream);
+                }
+                while (networkStream.DataAvailable);
+            }
+            Ranking = receivedData;
+
+            btnRanking.BeginInvoke(new MethodInvoker(() =>
+            {
+
+                btnRanking.Enabled = true;
+            }));
+
+
+        }
+        
         private void btnChoose1_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -345,6 +403,7 @@ namespace DemoExploter
 
                 point += 10;
                 TrueOrWrong = true;
+                
             }
             else
             {
@@ -369,6 +428,15 @@ namespace DemoExploter
             client.Close();
            
         }
-        
+
+        private void btnRanking_Click(object sender, EventArgs e)
+        {
+            PnEndGame.Visible = false;
+            PnRanking.Visible = true;
+            for (int i = 0; i < Ranking.Count; i++)
+            {
+                RTBRanking.AppendText("\r\n" +"Number"+(i+1)+":"+Ranking[i].Name+"-"+Ranking[i].Point);
+            }
+        }
     }
 }

@@ -36,6 +36,7 @@
     <Reference Include="MyLib">
       <HintPath>D:\Lib\MyLib.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
@@ -48,14 +49,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmGameShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,9 +74,6 @@
     <Compile Include="ucCauTraLoi.Designer.cs">
       <DependentUpon>ucCauTraLoi.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmGameShow.resx">
       <DependentUpon>frmGameShow.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +141,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="GIF\100.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GIF\0.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go-back-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\connect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cooltext358832290952836.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\go-back-icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\name.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\schedule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

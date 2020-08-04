@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 namespace DTOProj
 {
     [Serializable]
-    public class Player
+    public class ScheduleGame
+
     {
-        public string Point;
-        public string Name;
+        public string NameGame { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
     }
 }

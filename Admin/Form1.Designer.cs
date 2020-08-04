@@ -29,13 +29,17 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnQuit = new System.Windows.Forms.Button();
+            this.lbNextGame = new System.Windows.Forms.Label();
+            this.lbNextGameTime = new System.Windows.Forms.Label();
             this.btnLoadQuest = new System.Windows.Forms.Button();
             this.btnQuest = new System.Windows.Forms.Button();
             this.btnSchedule = new System.Windows.Forms.Button();
             this.btnServer = new System.Windows.Forms.Button();
             this.lbFunc = new System.Windows.Forms.Label();
             this.PnServer = new System.Windows.Forms.Panel();
-            this.btnPnServerSend = new System.Windows.Forms.Button();
+            this.RTBServer = new System.Windows.Forms.RichTextBox();
+            this.RTBChat = new System.Windows.Forms.RichTextBox();
             this.PnQuest = new System.Windows.Forms.Panel();
             this.CBAnswerD = new System.Windows.Forms.CheckBox();
             this.CBAnswerC = new System.Windows.Forms.CheckBox();
@@ -53,14 +57,11 @@
             this.txtA = new System.Windows.Forms.TextBox();
             this.txtQuest = new System.Windows.Forms.TextBox();
             this.btnAddquest = new System.Windows.Forms.Button();
-            this.TBServer = new System.Windows.Forms.TextBox();
-            this.RTBServer = new System.Windows.Forms.RichTextBox();
             this.PnSchedule = new System.Windows.Forms.Panel();
             this.btnImport = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.GrvSchedule = new System.Windows.Forms.DataGridView();
-            this.RTBChat = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +80,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnQuit);
+            this.splitContainer1.Panel1.Controls.Add(this.lbNextGame);
+            this.splitContainer1.Panel1.Controls.Add(this.lbNextGameTime);
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadQuest);
             this.splitContainer1.Panel1.Controls.Add(this.btnQuest);
             this.splitContainer1.Panel1.Controls.Add(this.btnSchedule);
@@ -88,10 +92,41 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PnServer);
+            this.splitContainer1.Panel2.Controls.Add(this.PnQuest);
             this.splitContainer1.Panel2.Controls.Add(this.PnSchedule);
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 186;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnQuit
+            // 
+            this.btnQuit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuit.Location = new System.Drawing.Point(12, 252);
+            this.btnQuit.Name = "btnQuit";
+            this.btnQuit.Size = new System.Drawing.Size(155, 43);
+            this.btnQuit.TabIndex = 7;
+            this.btnQuit.Text = "Quit";
+            this.btnQuit.UseVisualStyleBackColor = true;
+            this.btnQuit.Click += new System.EventHandler(this.btnQuit_Click);
+            // 
+            // lbNextGame
+            // 
+            this.lbNextGame.AutoSize = true;
+            this.lbNextGame.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNextGame.Location = new System.Drawing.Point(8, 338);
+            this.lbNextGame.Name = "lbNextGame";
+            this.lbNextGame.Size = new System.Drawing.Size(155, 21);
+            this.lbNextGame.TabIndex = 6;
+            this.lbNextGame.Text = "next game starts in";
+            // 
+            // lbNextGameTime
+            // 
+            this.lbNextGameTime.AutoSize = true;
+            this.lbNextGameTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNextGameTime.Location = new System.Drawing.Point(27, 368);
+            this.lbNextGameTime.Name = "lbNextGameTime";
+            this.lbNextGameTime.Size = new System.Drawing.Size(0, 37);
+            this.lbNextGameTime.TabIndex = 5;
             // 
             // btnLoadQuest
             // 
@@ -149,9 +184,6 @@
             // 
             // PnServer
             // 
-            this.PnServer.Controls.Add(this.btnPnServerSend);
-            this.PnServer.Controls.Add(this.PnQuest);
-            this.PnServer.Controls.Add(this.TBServer);
             this.PnServer.Controls.Add(this.RTBServer);
             this.PnServer.Controls.Add(this.RTBChat);
             this.PnServer.Enabled = false;
@@ -161,14 +193,21 @@
             this.PnServer.TabIndex = 17;
             this.PnServer.Visible = false;
             // 
-            // btnPnServerSend
+            // RTBServer
             // 
-            this.btnPnServerSend.Location = new System.Drawing.Point(308, 346);
-            this.btnPnServerSend.Name = "btnPnServerSend";
-            this.btnPnServerSend.Size = new System.Drawing.Size(105, 31);
-            this.btnPnServerSend.TabIndex = 2;
-            this.btnPnServerSend.Text = "SEND";
-            this.btnPnServerSend.UseVisualStyleBackColor = true;
+            this.RTBServer.Location = new System.Drawing.Point(0, 0);
+            this.RTBServer.Name = "RTBServer";
+            this.RTBServer.Size = new System.Drawing.Size(262, 344);
+            this.RTBServer.TabIndex = 0;
+            this.RTBServer.Text = "";
+            // 
+            // RTBChat
+            // 
+            this.RTBChat.Location = new System.Drawing.Point(265, 0);
+            this.RTBChat.Name = "RTBChat";
+            this.RTBChat.Size = new System.Drawing.Size(395, 344);
+            this.RTBChat.TabIndex = 17;
+            this.RTBChat.Text = "";
             // 
             // PnQuest
             // 
@@ -189,12 +228,11 @@
             this.PnQuest.Controls.Add(this.txtQuest);
             this.PnQuest.Controls.Add(this.btnAddquest);
             this.PnQuest.Enabled = false;
-            this.PnQuest.Location = new System.Drawing.Point(3, 0);
+            this.PnQuest.Location = new System.Drawing.Point(0, 0);
             this.PnQuest.Name = "PnQuest";
             this.PnQuest.Size = new System.Drawing.Size(607, 444);
             this.PnQuest.TabIndex = 6;
             this.PnQuest.Visible = false;
-            this.PnQuest.Paint += new System.Windows.Forms.PaintEventHandler(this.PnQuest_Paint);
             // 
             // CBAnswerD
             // 
@@ -238,7 +276,6 @@
             this.CBAnswerA.TabIndex = 13;
             this.CBAnswerA.Text = "Answer";
             this.CBAnswerA.UseVisualStyleBackColor = true;
-            this.CBAnswerA.CheckedChanged += new System.EventHandler(this.CBAnswerA_CheckedChanged);
             this.CBAnswerA.Click += new System.EventHandler(this.CBAnswerA_Click);
             // 
             // lbSelectD
@@ -323,7 +360,6 @@
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(284, 20);
             this.txtA.TabIndex = 2;
-            this.txtA.TextChanged += new System.EventHandler(this.txtA_TextChanged);
             // 
             // txtQuest
             // 
@@ -341,21 +377,6 @@
             this.btnAddquest.Text = "Add question";
             this.btnAddquest.UseVisualStyleBackColor = true;
             this.btnAddquest.Click += new System.EventHandler(this.btnAddquest_Click);
-            // 
-            // TBServer
-            // 
-            this.TBServer.Location = new System.Drawing.Point(3, 302);
-            this.TBServer.Name = "TBServer";
-            this.TBServer.Size = new System.Drawing.Size(595, 20);
-            this.TBServer.TabIndex = 1;
-            // 
-            // RTBServer
-            // 
-            this.RTBServer.Location = new System.Drawing.Point(0, 0);
-            this.RTBServer.Name = "RTBServer";
-            this.RTBServer.Size = new System.Drawing.Size(262, 270);
-            this.RTBServer.TabIndex = 0;
-            this.RTBServer.Text = "";
             // 
             // PnSchedule
             // 
@@ -413,14 +434,7 @@
             this.GrvSchedule.Size = new System.Drawing.Size(592, 186);
             this.GrvSchedule.TabIndex = 0;
             this.GrvSchedule.Visible = false;
-            // 
-            // RTBChat
-            // 
-            this.RTBChat.Location = new System.Drawing.Point(258, 0);
-            this.RTBChat.Name = "RTBChat";
-            this.RTBChat.Size = new System.Drawing.Size(402, 273);
-            this.RTBChat.TabIndex = 17;
-            this.RTBChat.Text = "";
+            this.GrvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrvSchedule_CellClick);
             // 
             // Form1
             // 
@@ -439,7 +453,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.PnServer.ResumeLayout(false);
-            this.PnServer.PerformLayout();
             this.PnQuest.ResumeLayout(false);
             this.PnQuest.PerformLayout();
             this.PnSchedule.ResumeLayout(false);
@@ -478,11 +491,12 @@
         private System.Windows.Forms.Label lbSelectA;
         private System.Windows.Forms.Label lbQuest;
         private System.Windows.Forms.Panel PnServer;
-        private System.Windows.Forms.TextBox TBServer;
         private System.Windows.Forms.RichTextBox RTBServer;
-        private System.Windows.Forms.Button btnPnServerSend;
         private System.Windows.Forms.Button btnLoadQuest;
         private System.Windows.Forms.RichTextBox RTBChat;
+        private System.Windows.Forms.Label lbNextGame;
+        private System.Windows.Forms.Label lbNextGameTime;
+        private System.Windows.Forms.Button btnQuit;
     }
 }
 

@@ -8,75 +8,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
+using DTOProj;
+using System.Media;
+using System.Windows.Media;
 namespace DemoExploter
 {
+
     public partial class frmGameShow : Form
     {
+       
+
+
         public frmGameShow()
         {
             InitializeComponent();
+            btnLich.Enabled = false;
         }
+        TcpClient client;
 
+        NetworkStream ns;
         Timer gameTimer = new Timer();
+        public static string NameUser;
+        int OrigTime = 1800;
+        public static DateTime newDateGame;
+        List<ScheduleGame> ReceiveScheduleFromServer = new List<ScheduleGame>();
+
         private void frmGameShow_Load(object sender, EventArgs e)
         {
+
+            
+            
+
             gameTimer.Interval = 1000;
             gameTimer.Tick += GameTimer_Tick;
-            List<GameShow> lst = new List<GameShow>();
-            lst.Add(
-               new GameShow()
-               {
-                   Id = 1,
-                   Name = "Nhanh như chớp",
-                   StartDate = DateTime.Now.AddSeconds(10),
-                   EndDate = DateTime.Now.AddMinutes(30)
-               });
-
-            lst.Add(
-               new GameShow()
-               {
-                   Id = 2,
-                   Name = "Nhanh như chớp",
-                   StartDate = DateTime.Now.AddDays(1),
-                   EndDate = DateTime.Now.AddDays(1).AddMinutes(30)
-               });
-
-            lst.Add(
-               new GameShow()
-               {
-                   Id = 3,
-                   Name = "Nhanh như chớp",
-                   StartDate = DateTime.Now.AddDays(2),
-                   EndDate = DateTime.Now.AddDays(2).AddMinutes(30)
-               });
-
-            lst.Add(
-               new GameShow()
-               {
-                   Id = 4,
-                   Name = "Nhanh như chớp",
-                   StartDate = DateTime.Now.AddDays(3),
-                   EndDate = DateTime.Now.AddDays(3).AddMinutes(30)
-               });
-
-            grvGameShow.DataSource = lst;
-
-            var nearestGameShow = lst[0];
-            lblName.Text = nearestGameShow.Name;
-            lblTime.Text = nearestGameShow.StartDate.ToString("dd/MM/yyyy hh:mm:ss");
-
-            OrigTime = (int)Math.Round((nearestGameShow.StartDate - DateTime.Now).TotalSeconds, 0);
-
-            gameTimer.Enabled = true;
+            
         }
-
+       
         private void GameTimer_Tick(object sender, EventArgs e)
         {
             timeX_Tick(sender, e);
         }
 
-        int OrigTime = 1800;
         void timeX_Tick(object sender, EventArgs e)
         {
             OrigTime--;
@@ -97,22 +73,7 @@ namespace DemoExploter
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void grvGameShow_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
-
-        private void lblTime_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void btnLich_Click(object sender, EventArgs e)
         {
@@ -132,23 +93,100 @@ namespace DemoExploter
             btnBack.Visible = true;
 
         }
-
-        private void txtCountDown_TextChanged(object sender, EventArgs e)
+  
+        private async void btnConnectServer_Click(object sender, EventArgs e)
         {
+            
+            byte[] bytes = new byte[1024*5000];
+            try
+            {
+                //listener = new TcpListener(IPAddress.Any, 13000);
+                //listener.Start();
+                client = new TcpClient(Dns.GetHostName(), 14000);
+                ns = client.GetStream();
 
+                MemoryStream memStream = new MemoryStream();
+                BinaryFormatter binForm = new BinaryFormatter();
+
+                // Wait for data to begin coming in for up to 20 secs
+
+                var receivedData = (List<ScheduleGame>)null;
+
+                using (var networkStream = ns)
+                {
+                    do
+                    {
+                        receivedData = (List<ScheduleGame>)binForm.Deserialize(networkStream);
+                    }
+                    while (networkStream.DataAvailable);
+                    ReceiveScheduleFromServer = receivedData;
+                }
+                client.Close();
+               
+                //////////////////////////////////
+                grvGameShow.DataSource = ReceiveScheduleFromServer;
+                //var nearestGameShow = lst[0];
+                var nearestGameShow = ReceiveScheduleFromServer[0];
+                lblName.Text = nearestGameShow.NameGame;
+                string dateAndTime;
+                dateAndTime = nearestGameShow.Date + " " + nearestGameShow.Time;
+               
+                newDateGame = Convert.ToDateTime(dateAndTime);
+                int DateCount = 0;
+               while(newDateGame<DateTime.Now && DateCount< ReceiveScheduleFromServer.Count)
+                {
+                     nearestGameShow = ReceiveScheduleFromServer[DateCount];
+                    lblName.Text = nearestGameShow.NameGame;
+                    
+                    dateAndTime = nearestGameShow.Date + " " + nearestGameShow.Time;
+                    
+                    newDateGame = Convert.ToDateTime(dateAndTime);
+                    DateCount++;
+                }
+                lblTime.Text = newDateGame.ToString("dd/MM/yyyy hh:mm:ss");
+                
+                OrigTime = (int)Math.Round((newDateGame - DateTime.Now).TotalSeconds, 0);
+
+                gameTimer.Enabled = true;
+                btnLich.Enabled = true;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Server chưa mở hoặc đã đóng ");
+
+            }
         }
-
+    
         private void btnBack_Click(object sender, EventArgs e)
         {
-            btnStart.Visible = true;
+            btnName.Visible = true;
+            btnConnectServer.Visible = true;
             btnLich.Visible = true;
-            btnBack.Visible = false;
+            btnQuit.Visible = true;
+            btnStart.Visible = true;
             grvGameShow.Visible = false;
+            tbSetName.Visible = false;
+            label1.Visible = false;
+            NameUser = tbSetName.Text;
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+       
+        private void btnName_Click(object sender, EventArgs e)
+        {
+            btnBack.Visible = true;
+            btnName.Visible = false;
+            btnConnectServer.Visible = false;
+            btnLich.Visible = false;
+            btnQuit.Visible = false;
+            btnStart.Visible = false;
+            tbSetName.Visible = true;
+            label1.Visible = true;
+
         }
     }
 }
