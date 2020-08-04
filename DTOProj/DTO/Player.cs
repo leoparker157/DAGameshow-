@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace DTOProj
 {
+    [Serializable]
     public class Player
     {
-        public int Id;
+        public string Point;
         public string Name;
     }
 }

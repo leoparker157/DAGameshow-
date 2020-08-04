@@ -33,7 +33,7 @@ namespace MyLib
 
             return obj;
         }
-        byte[] Serialize(object obj)
+        public static byte[] Serialize(object obj)
         {
             //khởi tạo stream để lưu các byte phân mảnh
             MemoryStream stream = new MemoryStream();
@@ -46,7 +46,7 @@ namespace MyLib
         }
 
         //Hàm gom mảnh các byte nhận được rồi chuyển sang kiểu string để hiện thị lên màn hình
-        object Deseriliaze(byte[] data)
+        public static object Deseriliaze(byte[] data)
         {
             //khởi tạo stream đọc kết quả của quá trình phân mảnh 
             MemoryStream stream = new MemoryStream(data);

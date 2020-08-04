@@ -11,10 +11,3 @@ H:\projectnam2\c#\DACK08072020\DemoExploter\MyLib\obj\Debug\MyLib.csprojAssembly
 H:\projectnam2\c#\DACK08072020\DemoExploter\MyLib\obj\Debug\MyLib.csproj.CoreCompileInputs.cache
 H:\projectnam2\c#\DACK08072020\DemoExploter\MyLib\obj\Debug\MyLib.dll
 H:\projectnam2\c#\DACK08072020\DemoExploter\MyLib\obj\Debug\MyLib.pdb
-H:\GIT\DAGAMESHOW\MyLib\bin\Debug\MyLib.dll.config
-H:\GIT\DAGAMESHOW\MyLib\bin\Debug\MyLib.dll
-H:\GIT\DAGAMESHOW\MyLib\bin\Debug\MyLib.pdb
-H:\GIT\DAGAMESHOW\MyLib\obj\Debug\MyLib.csprojAssemblyReference.cache
-H:\GIT\DAGAMESHOW\MyLib\obj\Debug\MyLib.csproj.CoreCompileInputs.cache
-H:\GIT\DAGAMESHOW\MyLib\obj\Debug\MyLib.dll
-H:\GIT\DAGAMESHOW\MyLib\obj\Debug\MyLib.pdb
