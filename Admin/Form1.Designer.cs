@@ -1,6 +1,6 @@
 ﻿namespace Admin
 {
-    partial class Form1
+    partial class Admin
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,8 @@
             this.btnServer = new System.Windows.Forms.Button();
             this.lbFunc = new System.Windows.Forms.Label();
             this.PnServer = new System.Windows.Forms.Panel();
+            this.btnAdminSendText = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.RTBServer = new System.Windows.Forms.RichTextBox();
             this.RTBChat = new System.Windows.Forms.RichTextBox();
             this.PnQuest = new System.Windows.Forms.Panel();
@@ -62,6 +64,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.GrvSchedule = new System.Windows.Forms.DataGridView();
+            this.lbHelp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -80,6 +83,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lbHelp);
             this.splitContainer1.Panel1.Controls.Add(this.btnQuit);
             this.splitContainer1.Panel1.Controls.Add(this.lbNextGame);
             this.splitContainer1.Panel1.Controls.Add(this.lbNextGameTime);
@@ -184,6 +188,8 @@
             // 
             // PnServer
             // 
+            this.PnServer.Controls.Add(this.btnAdminSendText);
+            this.PnServer.Controls.Add(this.textBox1);
             this.PnServer.Controls.Add(this.RTBServer);
             this.PnServer.Controls.Add(this.RTBChat);
             this.PnServer.Enabled = false;
@@ -192,6 +198,23 @@
             this.PnServer.Size = new System.Drawing.Size(601, 438);
             this.PnServer.TabIndex = 17;
             this.PnServer.Visible = false;
+            // 
+            // btnAdminSendText
+            // 
+            this.btnAdminSendText.Location = new System.Drawing.Point(265, 394);
+            this.btnAdminSendText.Name = "btnAdminSendText";
+            this.btnAdminSendText.Size = new System.Drawing.Size(75, 23);
+            this.btnAdminSendText.TabIndex = 19;
+            this.btnAdminSendText.Text = "Send";
+            this.btnAdminSendText.UseVisualStyleBackColor = true;
+            this.btnAdminSendText.Click += new System.EventHandler(this.btnAdminSendText_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(25, 368);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(538, 20);
+            this.textBox1.TabIndex = 18;
             // 
             // RTBServer
             // 
@@ -436,14 +459,25 @@
             this.GrvSchedule.Visible = false;
             this.GrvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrvSchedule_CellClick);
             // 
-            // Form1
+            // lbHelp
+            // 
+            this.lbHelp.AutoSize = true;
+            this.lbHelp.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHelp.Location = new System.Drawing.Point(3, 9);
+            this.lbHelp.Name = "lbHelp";
+            this.lbHelp.Size = new System.Drawing.Size(16, 19);
+            this.lbHelp.TabIndex = 8;
+            this.lbHelp.Text = "?";
+            this.lbHelp.Click += new System.EventHandler(this.lbHelp_Click);
+            // 
+            // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Admin";
+            this.Text = "Admin";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -453,6 +487,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.PnServer.ResumeLayout(false);
+            this.PnServer.PerformLayout();
             this.PnQuest.ResumeLayout(false);
             this.PnQuest.PerformLayout();
             this.PnSchedule.ResumeLayout(false);
@@ -497,6 +532,9 @@
         private System.Windows.Forms.Label lbNextGame;
         private System.Windows.Forms.Label lbNextGameTime;
         private System.Windows.Forms.Button btnQuit;
+        private System.Windows.Forms.Button btnAdminSendText;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbHelp;
     }
 }
 

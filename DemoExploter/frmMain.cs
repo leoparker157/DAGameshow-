@@ -438,5 +438,10 @@ namespace DemoExploter
                 RTBRanking.AppendText("\r\n" +"Number"+(i+1)+":"+Ranking[i].Name+"-"+Ranking[i].Point);
             }
         }
+
+        private void lbPoint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

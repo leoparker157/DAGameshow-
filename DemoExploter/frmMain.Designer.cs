@@ -54,6 +54,7 @@
             this.PnRanking = new System.Windows.Forms.Panel();
             this.RTBRanking = new System.Windows.Forms.RichTextBox();
             this.ILPoint = new System.Windows.Forms.ImageList(this.components);
+            this.lbPointText = new System.Windows.Forms.Label();
             this.PnBeforeGame.SuspendLayout();
             this.PnGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -148,8 +149,9 @@
             // 
             // PnGame
             // 
-            this.PnGame.Controls.Add(this.pictureBox2);
             this.PnGame.Controls.Add(this.pictureBox1);
+            this.PnGame.Controls.Add(this.pictureBox2);
+            this.PnGame.Controls.Add(this.lbPointText);
             this.PnGame.Controls.Add(this.lbPoint);
             this.PnGame.Controls.Add(this.lbTimelimit);
             this.PnGame.Controls.Add(this.lbCountDownGame);
@@ -187,11 +189,12 @@
             // 
             this.lbPoint.AutoSize = true;
             this.lbPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPoint.Location = new System.Drawing.Point(29, 12);
+            this.lbPoint.Location = new System.Drawing.Point(61, 12);
             this.lbPoint.Name = "lbPoint";
             this.lbPoint.Size = new System.Drawing.Size(20, 24);
             this.lbPoint.TabIndex = 15;
             this.lbPoint.Text = "0";
+            this.lbPoint.Click += new System.EventHandler(this.lbPoint_Click);
             // 
             // lbTimelimit
             // 
@@ -322,6 +325,16 @@
             this.ILPoint.Images.SetKeyName(9, "100.gif");
             this.ILPoint.Images.SetKeyName(10, "GameOver.gif");
             // 
+            // lbPointText
+            // 
+            this.lbPointText.AutoSize = true;
+            this.lbPointText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPointText.Location = new System.Drawing.Point(3, 12);
+            this.lbPointText.Name = "lbPointText";
+            this.lbPointText.Size = new System.Drawing.Size(52, 24);
+            this.lbPointText.TabIndex = 17;
+            this.lbPointText.Text = "Point";
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,5 +393,6 @@
         private System.Windows.Forms.Panel PnRanking;
         private System.Windows.Forms.RichTextBox RTBRanking;
         private System.Windows.Forms.Button btnRanking;
+        private System.Windows.Forms.Label lbPointText;
     }
 }

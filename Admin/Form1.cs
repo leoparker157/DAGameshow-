@@ -20,10 +20,10 @@ using System.Globalization;
 namespace Admin
 {
    
-    public partial class Form1 : Form
+    public partial class Admin : Form
     {
         Thread T = null;
-        public Form1()
+        public Admin()
         {
             InitializeComponent();
 
@@ -365,7 +365,7 @@ namespace Admin
                 lbNextGameTime.Text = newDateGame.ToString(("dd/MM/yyyy hh:mm:ss"));
                 OrigTime = (int)Math.Round((newDateGame - DateTime.Now).TotalSeconds, 0);
                 gameTimer.Enabled = true;
-                ScheduleToClient = new TcpListener(IPAddress.Any, 14000);
+                ScheduleToClient = new TcpListener(IPAddress.Any, 45000);
                 ScheduleToClient.Start();
                 Thread threadSchedule = new Thread(SendScheduleToClient);
                 threadSchedule.Start();
@@ -763,10 +763,35 @@ namespace Admin
         {
             if (IsListen == true)
             {
-                this.Close();
+                ServerSocket.Stop();
+                
             }
+            this.Close();
         }
         bool AdminChat = false;
-     
+
+        private void btnAdminSendText_Click(object sender, EventArgs e)
+        {
+            byte[] bytes = new byte[1024];
+            String mess = btnAdminSendText.Text;
+            String ss = /*client.Client.Handle*/ "Admin" + ":" + mess;
+            bytes = Encoding.ASCII.GetBytes(ss);
+            for (int i = 0; i < ClientConnect.Count(); i++)
+            {
+                if (ClientConnect[i] != null)
+                {
+
+                    ClientConnect[i].ns.Write(bytes, 0, bytes.Length);
+                }
+            }
+        }
+
+        private void lbHelp_Click(object sender, EventArgs e)
+        {
+            string fullPath = (Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Help.txt");
+            string readText = File.ReadAllText(fullPath);
+
+            MessageBox.Show(readText);
+        }
     }
 }
