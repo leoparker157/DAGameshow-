@@ -39,8 +39,9 @@
             this.PnBeforeGame = new System.Windows.Forms.Panel();
             this.lbBeforeGameTime = new System.Windows.Forms.Label();
             this.PnGame = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbPointText = new System.Windows.Forms.Label();
             this.lbPoint = new System.Windows.Forms.Label();
             this.lbTimelimit = new System.Windows.Forms.Label();
             this.lbCountDownGame = new System.Windows.Forms.Label();
@@ -54,11 +55,10 @@
             this.PnRanking = new System.Windows.Forms.Panel();
             this.RTBRanking = new System.Windows.Forms.RichTextBox();
             this.ILPoint = new System.Windows.Forms.ImageList(this.components);
-            this.lbPointText = new System.Windows.Forms.Label();
             this.PnBeforeGame.SuspendLayout();
             this.PnGame.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.PnEndGame.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PBGameOver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPoint)).BeginInit();
@@ -165,6 +165,16 @@
             this.PnGame.Size = new System.Drawing.Size(520, 426);
             this.PnGame.TabIndex = 10;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(523, 444);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -175,15 +185,15 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // pictureBox1
+            // lbPointText
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(523, 444);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.lbPointText.AutoSize = true;
+            this.lbPointText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPointText.Location = new System.Drawing.Point(3, 12);
+            this.lbPointText.Name = "lbPointText";
+            this.lbPointText.Size = new System.Drawing.Size(52, 24);
+            this.lbPointText.TabIndex = 17;
+            this.lbPointText.Text = "Point";
             // 
             // lbPoint
             // 
@@ -325,16 +335,6 @@
             this.ILPoint.Images.SetKeyName(9, "100.gif");
             this.ILPoint.Images.SetKeyName(10, "GameOver.gif");
             // 
-            // lbPointText
-            // 
-            this.lbPointText.AutoSize = true;
-            this.lbPointText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPointText.Location = new System.Drawing.Point(3, 12);
-            this.lbPointText.Name = "lbPointText";
-            this.lbPointText.Size = new System.Drawing.Size(52, 24);
-            this.lbPointText.TabIndex = 17;
-            this.lbPointText.Text = "Point";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,8 +356,8 @@
             this.PnBeforeGame.PerformLayout();
             this.PnGame.ResumeLayout(false);
             this.PnGame.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.PnEndGame.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PBGameOver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PBPoint)).EndInit();

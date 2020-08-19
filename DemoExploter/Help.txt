@@ -1,0 +1,4 @@
+1. Connect to server 
+2. Pick a name .
+3. Waiting for game starting and click Start button
+ 

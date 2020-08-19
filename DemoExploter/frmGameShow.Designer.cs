@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGameShow));
             this.grvGameShow = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
@@ -43,16 +43,18 @@
             this.btnName = new System.Windows.Forms.Button();
             this.tbSetName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbHelp = new System.Windows.Forms.Label();
+            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grvGameShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // grvGameShow
             // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            this.grvGameShow.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            this.grvGameShow.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
             this.grvGameShow.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             this.grvGameShow.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.grvGameShow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -200,7 +202,7 @@
             this.btnName.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.btnName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnName.ForeColor = System.Drawing.Color.Transparent;
+            this.btnName.ForeColor = System.Drawing.Color.Black;
             this.btnName.Location = new System.Drawing.Point(168, 314);
             this.btnName.Name = "btnName";
             this.btnName.Size = new System.Drawing.Size(179, 55);
@@ -228,12 +230,37 @@
             this.label1.Text = "Set Name";
             this.label1.Visible = false;
             // 
+            // lbHelp
+            // 
+            this.lbHelp.AutoSize = true;
+            this.lbHelp.Image = global::DemoExploter.Properties.Resources.Help;
+            this.lbHelp.Location = new System.Drawing.Point(128, 28);
+            this.lbHelp.Name = "lbHelp";
+            this.lbHelp.Size = new System.Drawing.Size(0, 13);
+            this.lbHelp.TabIndex = 14;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.BackColor = System.Drawing.Color.Transparent;
+            this.btnHelp.BackgroundImage = global::DemoExploter.Properties.Resources.Help;
+            this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(97, 6);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(43, 40);
+            this.btnHelp.TabIndex = 15;
+            this.btnHelp.UseVisualStyleBackColor = false;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
+            // 
             // frmGameShow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(524, 706);
+            this.Controls.Add(this.btnHelp);
+            this.Controls.Add(this.lbHelp);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnName);
             this.Controls.Add(this.btnConnectServer);
@@ -272,5 +299,7 @@
         private System.Windows.Forms.Button btnName;
         private System.Windows.Forms.TextBox tbSetName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbHelp;
+        private System.Windows.Forms.Button btnHelp;
     }
 }

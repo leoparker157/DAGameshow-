@@ -8,9 +8,3 @@ H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.csprojAsse
 H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.csproj.CoreCompileInputs.cache
 H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.dll
 H:\projectnam2\c#\DACK08072020\DemoExploter\DTOProj\obj\Debug\DTOProj.pdb
-H:\GIT\DAGAMESHOW\DTOProj\bin\Debug\DTOProj.dll
-H:\GIT\DAGAMESHOW\DTOProj\bin\Debug\DTOProj.pdb
-H:\GIT\DAGAMESHOW\DTOProj\obj\Debug\DTOProj.csproj.CoreCompileInputs.cache
-H:\GIT\DAGAMESHOW\DTOProj\obj\Debug\DTOProj.dll
-H:\GIT\DAGAMESHOW\DTOProj\obj\Debug\DTOProj.pdb
-H:\GIT\DAGAMESHOW\DTOProj\obj\Debug\DTOProj.csprojAssemblyReference.cache

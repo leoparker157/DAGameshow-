@@ -60,7 +60,8 @@ namespace DemoExploter
             if(OrigTime<=0)
             {
                 gameTimer.Enabled = false;
-                btnStart.Enabled = true;
+                if (NameUser!=null)
+                { btnStart.Enabled = true; }
             }
         }
 
@@ -108,7 +109,6 @@ namespace DemoExploter
                 MemoryStream memStream = new MemoryStream();
                 BinaryFormatter binForm = new BinaryFormatter();
 
-                // Wait for data to begin coming in for up to 20 secs
 
                 var receivedData = (List<ScheduleGame>)null;
 
@@ -169,6 +169,8 @@ namespace DemoExploter
             tbSetName.Visible = false;
             label1.Visible = false;
             NameUser = tbSetName.Text;
+            if ((NameUser != null) && (OrigTime <= 0))
+            { btnStart.Enabled = true; }
         }
 
         private void btnQuit_Click(object sender, EventArgs e)
@@ -187,6 +189,15 @@ namespace DemoExploter
             tbSetName.Visible = true;
             label1.Visible = true;
 
+
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string fullPath = (Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Help.txt");
+            string readText = File.ReadAllText(fullPath);
+
+            MessageBox.Show(readText);
         }
     }
 }

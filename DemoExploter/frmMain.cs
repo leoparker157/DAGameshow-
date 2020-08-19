@@ -59,8 +59,6 @@ namespace DemoExploter
             InitializeComponent();
         }
        
-        string duongDan = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName+ "\\DanhSachCauHoi.txt";
-
         
         
         private void frmMain_Load(object sender, EventArgs e)
@@ -108,6 +106,7 @@ namespace DemoExploter
                 do
                 {
                     BinaryFormatter bf = new BinaryFormatter();
+                    
                     bf.Serialize(networkStream, frmGameShow.NameUser);
                     receivedData = (List<Question>)binForm.Deserialize(networkStream);
                 }

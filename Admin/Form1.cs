@@ -56,7 +56,9 @@ namespace Admin
         int OrigTime = 1800;
         int ThoiGianBatDau = 30;
         bool serversocketStop = false;
+        bool RestartServer = false;
         int ClientPoint = -1;
+        int NumberOfUser = 0;
         Connection[] ClientConnectPoint = new Connection[100];
         DateTimePicker oDateTimePicker = null;
         private void Form1_Load(object sender, EventArgs e)
@@ -278,6 +280,7 @@ namespace Admin
             if (OrigTime <= 0)
             {
                 gameTimer.Enabled = false;
+                RestartServer = true;
                 ScheduleToClient.Stop();
                 lbNextGame.Text = "Start in ";
                 OrigTime = (int)Math.Round((DateTime.Now.AddSeconds(ThoiGianBatDau) -DateTime.Now).TotalSeconds, 0);
@@ -321,6 +324,7 @@ namespace Admin
             {
                 gamestartAfter.Enabled = false;
                 ServerSocket.Stop();
+
             }
         }
 
@@ -338,8 +342,11 @@ namespace Admin
 
             using (StreamReader sr = new StreamReader(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "\\Schedule.txt"))
             {
-                gameTimer.Interval = 1000;
-                gameTimer.Tick += GameTimer_Tick;
+                if (RestartServer == false)
+                {
+                    gameTimer.Interval = 1000;
+                    gameTimer.Tick += GameTimer_Tick;
+                }
                 string newline;
                 newline = sr.ReadLine();            
                     var y = string.Join(".", newline.Split(',').Skip(1));
@@ -365,7 +372,7 @@ namespace Admin
                 lbNextGameTime.Text = newDateGame.ToString(("dd/MM/yyyy hh:mm:ss"));
                 OrigTime = (int)Math.Round((newDateGame - DateTime.Now).TotalSeconds, 0);
                 gameTimer.Enabled = true;
-                ScheduleToClient = new TcpListener(IPAddress.Any, 45000);
+                ScheduleToClient = new TcpListener(IPAddress.Any, 14000);
                 ScheduleToClient.Start();
                 Thread threadSchedule = new Thread(SendScheduleToClient);
                 threadSchedule.Start();
@@ -446,9 +453,14 @@ namespace Admin
                     TcpClient client = ServerSocket.AcceptTcpClient();
                     numclient++;
                     this.SetText("User" + client.Client.Handle + " connected");
+                   
                     ClientConnect[numclient] = new Connection();
                     ClientConnect[numclient].client = client;
-                    ClientConnect[numclient].ns = client.GetStream();  
+                    ClientConnect[numclient].ns = client.GetStream();
+                    InvokeUI(() => {
+                        lbNumberUser.Text = "User:" + ++NumberOfUser;
+                    });
+                    
                     BinaryFormatter binform = new BinaryFormatter();
                     ClientConnect[numclient].name= (string)binform.Deserialize(ClientConnect[numclient].ns);
                     BinaryFormatter bf = new BinaryFormatter();
@@ -546,6 +558,10 @@ namespace Admin
                 client = null;
                 ClientConnect[myTaskNumber].client.Close();
                 ClientConnect[myTaskNumber] = null;
+                InvokeUI(() => {
+                    lbNumberUser.Text = "User:" + --NumberOfUser;
+                });
+
             }
         }
      
@@ -634,7 +650,10 @@ namespace Admin
                 this.RTBChat.Text = this.RTBChat.Text + text + "\r\n";
             }
         }
-       
+        private void InvokeUI(Action a)
+        {
+            this.BeginInvoke(new MethodInvoker(a));
+        }
 
         //Load Quest
         private void btnLoadQuest_Click(object sender, EventArgs e)
@@ -768,14 +787,16 @@ namespace Admin
             }
             this.Close();
         }
-        bool AdminChat = false;
 
         private void btnAdminSendText_Click(object sender, EventArgs e)
         {
             byte[] bytes = new byte[1024];
-            String mess = btnAdminSendText.Text;
+            
+            String mess = TBAdminChat.Text;
             String ss = /*client.Client.Handle*/ "Admin" + ":" + mess;
+            this.SetTextChat(ss);
             bytes = Encoding.ASCII.GetBytes(ss);
+            TBAdminChat.Text = "";
             for (int i = 0; i < ClientConnect.Count(); i++)
             {
                 if (ClientConnect[i] != null)
@@ -793,5 +814,12 @@ namespace Admin
 
             MessageBox.Show(readText);
         }
+    
+        private void lbNumberUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

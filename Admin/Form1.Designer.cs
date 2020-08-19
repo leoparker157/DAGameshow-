@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lbHelp = new System.Windows.Forms.Label();
             this.btnQuit = new System.Windows.Forms.Button();
             this.lbNextGame = new System.Windows.Forms.Label();
             this.lbNextGameTime = new System.Windows.Forms.Label();
@@ -38,8 +39,9 @@
             this.btnServer = new System.Windows.Forms.Button();
             this.lbFunc = new System.Windows.Forms.Label();
             this.PnServer = new System.Windows.Forms.Panel();
+            this.lbNumberUser = new System.Windows.Forms.Label();
             this.btnAdminSendText = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TBAdminChat = new System.Windows.Forms.TextBox();
             this.RTBServer = new System.Windows.Forms.RichTextBox();
             this.RTBChat = new System.Windows.Forms.RichTextBox();
             this.PnQuest = new System.Windows.Forms.Panel();
@@ -64,7 +66,6 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.GrvSchedule = new System.Windows.Forms.DataGridView();
-            this.lbHelp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -101,6 +102,17 @@
             this.splitContainer1.Size = new System.Drawing.Size(800, 450);
             this.splitContainer1.SplitterDistance = 186;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // lbHelp
+            // 
+            this.lbHelp.AutoSize = true;
+            this.lbHelp.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHelp.Location = new System.Drawing.Point(3, 9);
+            this.lbHelp.Name = "lbHelp";
+            this.lbHelp.Size = new System.Drawing.Size(16, 19);
+            this.lbHelp.TabIndex = 8;
+            this.lbHelp.Text = "?";
+            this.lbHelp.Click += new System.EventHandler(this.lbHelp_Click);
             // 
             // btnQuit
             // 
@@ -188,8 +200,9 @@
             // 
             // PnServer
             // 
+            this.PnServer.Controls.Add(this.lbNumberUser);
             this.PnServer.Controls.Add(this.btnAdminSendText);
-            this.PnServer.Controls.Add(this.textBox1);
+            this.PnServer.Controls.Add(this.TBAdminChat);
             this.PnServer.Controls.Add(this.RTBServer);
             this.PnServer.Controls.Add(this.RTBChat);
             this.PnServer.Enabled = false;
@@ -198,6 +211,17 @@
             this.PnServer.Size = new System.Drawing.Size(601, 438);
             this.PnServer.TabIndex = 17;
             this.PnServer.Visible = false;
+            // 
+            // lbNumberUser
+            // 
+            this.lbNumberUser.AutoSize = true;
+            this.lbNumberUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNumberUser.Location = new System.Drawing.Point(14, 4);
+            this.lbNumberUser.Name = "lbNumberUser";
+            this.lbNumberUser.Size = new System.Drawing.Size(45, 16);
+            this.lbNumberUser.TabIndex = 20;
+            this.lbNumberUser.Text = "User:";
+            this.lbNumberUser.Click += new System.EventHandler(this.lbNumberUser_Click);
             // 
             // btnAdminSendText
             // 
@@ -209,16 +233,16 @@
             this.btnAdminSendText.UseVisualStyleBackColor = true;
             this.btnAdminSendText.Click += new System.EventHandler(this.btnAdminSendText_Click);
             // 
-            // textBox1
+            // TBAdminChat
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 368);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(538, 20);
-            this.textBox1.TabIndex = 18;
+            this.TBAdminChat.Location = new System.Drawing.Point(25, 368);
+            this.TBAdminChat.Name = "TBAdminChat";
+            this.TBAdminChat.Size = new System.Drawing.Size(538, 20);
+            this.TBAdminChat.TabIndex = 18;
             // 
             // RTBServer
             // 
-            this.RTBServer.Location = new System.Drawing.Point(0, 0);
+            this.RTBServer.Location = new System.Drawing.Point(3, 23);
             this.RTBServer.Name = "RTBServer";
             this.RTBServer.Size = new System.Drawing.Size(262, 344);
             this.RTBServer.TabIndex = 0;
@@ -226,9 +250,9 @@
             // 
             // RTBChat
             // 
-            this.RTBChat.Location = new System.Drawing.Point(265, 0);
+            this.RTBChat.Location = new System.Drawing.Point(265, 23);
             this.RTBChat.Name = "RTBChat";
-            this.RTBChat.Size = new System.Drawing.Size(395, 344);
+            this.RTBChat.Size = new System.Drawing.Size(345, 344);
             this.RTBChat.TabIndex = 17;
             this.RTBChat.Text = "";
             // 
@@ -459,17 +483,6 @@
             this.GrvSchedule.Visible = false;
             this.GrvSchedule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GrvSchedule_CellClick);
             // 
-            // lbHelp
-            // 
-            this.lbHelp.AutoSize = true;
-            this.lbHelp.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbHelp.Location = new System.Drawing.Point(3, 9);
-            this.lbHelp.Name = "lbHelp";
-            this.lbHelp.Size = new System.Drawing.Size(16, 19);
-            this.lbHelp.TabIndex = 8;
-            this.lbHelp.Text = "?";
-            this.lbHelp.Click += new System.EventHandler(this.lbHelp_Click);
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -533,8 +546,9 @@
         private System.Windows.Forms.Label lbNextGameTime;
         private System.Windows.Forms.Button btnQuit;
         private System.Windows.Forms.Button btnAdminSendText;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TBAdminChat;
         private System.Windows.Forms.Label lbHelp;
+        private System.Windows.Forms.Label lbNumberUser;
     }
 }
 
